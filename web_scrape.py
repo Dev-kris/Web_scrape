@@ -46,14 +46,14 @@ page_soup = soup(page_dump, "html.parser")
 #grabs each job
 containers = page_soup.findAll("div",{"class":"jobsearch-SerpJobCard"})
 
+#create csv file to store data
 filename = "jobs.csv"
 f = open(filename, "w" )
-
 headers = "Job, Company, Location \n"
 
 f.write(headers)
 
-# print each job title and company name
+# print each job title and company name and write to csv file
 for container in range(len(containers)):
     title_container = containers[container].find("div",{"class": "title"})
     company_container = containers[container].find("span",{"class": "company"})
